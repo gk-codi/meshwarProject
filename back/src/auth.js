@@ -38,7 +38,7 @@ const start = async () => {
         const { error } = registerValidation(req.body);
         if (error) return res.status(400).send(error.details[0].message);
 
-        // Hash the password 
+        // Hash the password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
         req.body.password = hashedPassword;
@@ -65,6 +65,12 @@ const start = async () => {
         } catch (err) {
             res.status(404).json({success: false, error: err.message});
         }
+    })
+    
+    router.get('/', (req, res)=> {
+        res.json({
+            status: 'working'
+        })
     })
 
 }

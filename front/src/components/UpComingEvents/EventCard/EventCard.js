@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { API_URL } from '../../../constants';
+
 import './EventCard.css';
 import Button from '../Button/Button'
 import Article from '../Article/Article'
@@ -33,7 +35,7 @@ class EventCard extends Component {
       body.append('mobile', this.state.registration.mobile);
       body.append('address', this.state.registration.address);
       console.log(body)
-      const response = await fetch('http://localhost:8080/addregistration', {
+      const response = await fetch(`${API_URL}/addregistration`, {
         method: `POST`,
         body: body
       });
@@ -143,7 +145,7 @@ class EventCard extends Component {
       <>
         <Article className="EventSection_m_mt10">
           <div style={{
-            background: `url('http://localhost:8080/images/${src}') no-repeat center center/cover`,
+            background: `url('${API_URL}/images/${src}') no-repeat center center/cover`,
             position: "relative",
             width: "100%",
             height: "200px",

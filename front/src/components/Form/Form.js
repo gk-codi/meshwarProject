@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+
+import { API_URL } from '../../constants';
+
 import "./Form.css";
 
 class Form extends Component {
@@ -28,7 +31,7 @@ class Form extends Component {
         message: ""
       }
     })
-    const response = await fetch("http://localhost:8080/contact", {
+    const response = await fetch(`${API_URL}/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
